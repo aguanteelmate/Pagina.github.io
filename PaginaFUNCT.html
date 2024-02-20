@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página con Audio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            animation: cambiarFondo 10s infinite alternate;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes cambiarFondo {
+            0% {
+                background-color: #ff66b2; /* rosa */
+            }
+            50% {
+                background-color: #8a63d2; /* morado */
+            }
+            100% {
+                background-color: #ff6666; /* rojo */
+            }
+        }
+
+        .audio-container,
+        .imagen-container {
+            text-align: center;
+            position: absolute;
+        }
+
+        .mensaje {
+            position: absolute;
+            font-family: 'Arial', sans-serif; /* Cambiamos la fuente */
+            font-size: 36px;
+            font-weight: bold;
+            color: #ff66b2; /* Inicialmente rosa */
+            animation: moverElemento 5s infinite ease-in-out;
+        }
+
+        .imagen {
+            width: 100px; /* Cambia el tamaño según tus necesidades */
+            height: auto;
+            position: absolute;
+        }
+
+        @keyframes moverElemento {
+            0%, 100% {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            25% {
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            50% {
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .imagen1 {
+            animation: orbitarImagen 10s infinite linear;
+        }
+
+        .imagen2 {
+            animation: orbitarImagen 12s infinite linear;
+        }
+
+        .imagen3 {
+            animation: orbitarImagen 14s infinite linear;
+        }
+
+        .imagen4 {
+            animation: orbitarImagen 16s infinite linear;
+        }
+
+        @keyframes orbitarImagen {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg) translate(200px) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg) translate(200px) rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="audio-container">
+        <audio id="miAudio" autoplay>
+            <source src="tu_pista_de_audio.mp4" type="audio/mp4">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <!-- Agregamos el título mejorado -->
+    <div class="mensaje">¡FELIZ PRIMER MES!</div>
+
+    <!-- Agregamos las imágenes -->
+    <div class="imagen-container">
+        <img class="imagen imagen1" src="snoopy_image_1.jpg" alt="Imagen 1">
+        <img class="imagen imagen2" src="snoopy_image_2.jpg" alt="Imagen 2">
+        <img class="imagen imagen3" src="snoopy_image_3.jpg" alt="Imagen 3">
+        <img class="imagen imagen4" src="heart_red.png" alt="Imagen 4">
+    </div>
+
+    <script>
+        const miAudio = document.getElementById('miAudio');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            miAudio.play().catch(error => {
+                console.error("Error al reproducir audio:", error);
+            });
+        });
+
+        document.body.addEventListener('click', () => {
+            if (miAudio.paused) {
+                miAudio.play();
+            } else {
+                miAudio.pause();
+            }
+        });
+    </script>
+</body>
+</html>
